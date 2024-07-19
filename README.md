@@ -1,5 +1,6 @@
 # Tress
 Terminal Chess made with Rust
+```
    ████           █
   █  █████████████
  █     █████████
@@ -15,3 +16,4 @@ Terminal Chess made with Rust
        ███     █     ███       ████    ██ ████ █  █ ████ █
         ███████       ███       ███████    ████      ████
           ███                    █████
+```
