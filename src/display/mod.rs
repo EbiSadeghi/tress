@@ -6,7 +6,7 @@ fn initialize_board(width: usize, height: usize) -> Vec<Vec<char>> {
     let mut array = vec![vec!['a'; width]; height];
     for ii in 0..8 {
         for jj in 0..8 {
-            array[ii][jj] = wipe_tile(ii, jj);
+            array[ii][jj] = GameBoard::wipe_tile(ii, jj);
         }
     }
 
@@ -53,7 +53,7 @@ fn sample_board() {
 }
 
 // pub fn batch(alpha:f32, features:&[[f32; 1]; 4], labels:&[f32]) -> Vec<f32>
-fn show_board(width: usize, height: usize, array: &Vec<Vec<char>>) {
+pub fn show_board(width: usize, height: usize, array: &Vec<Vec<char>>) {
     for yy in 0..height {
         print!("{} ", yy + 1);
         for xx in 0..width {
@@ -64,23 +64,30 @@ fn show_board(width: usize, height: usize, array: &Vec<Vec<char>>) {
     println!("  A B C D E F G H");
 }
 
-pub fn board() {
-    let width: usize = 8;
-    let height: usize = 8;
-
-    let board = initialize_board(width, height);
-
-    show_board(width, height, &board);
+pub struct GameBoard {
+    width: usize,
+    height: usize,
+    board: Vec<Vec<char>>,
 }
 
-fn wipe_tile(x: usize, y: usize) -> char {
-    let tile: char;
+impl GameBoard {
+    pub fn get_board() {
+        let width: usize = 8;
+        let height: usize = 8;
+        let board = initialize_board(width, height);
 
-    if (x + y) % 2 == 0 {
-        tile = '□';
-    } else {
-        tile = '■';
+        show_board(width, height, &board);
     }
 
-    return tile;
+    pub fn wipe_tile(x: usize, y: usize) -> char {
+        let tile: char;
+
+        if (x + y) % 2 == 0 {
+            tile = '□';
+        } else {
+            tile = '■';
+        }
+
+        return tile;
+    }
 }
