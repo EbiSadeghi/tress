@@ -6,16 +6,12 @@ mod detect;
 mod display;
 mod game_file;
 
+const DEFAULT_BOARD_SIZE: usize = 8;
+
 // https://en.wikipedia.org/wiki/Portable_Game_Notation
 //
 
 /*
-♜♞♝♛♚♝♞♜
-♟︎♟︎♟︎♟︎♟︎♟︎♟︎♟︎
-
-♙♙♙♙♙♙♙♙
-♖♘♗♕♔♗♘♖
-
 🨞 🨤 🨀
 */
 struct tile {
@@ -45,12 +41,24 @@ fn main() {
         .read_line(&mut input)
         .expect("Failed to read line");
 
+    let mut new_board = display::GameBoard::ctor(None, None);
+
     println!("Your input was {}", input);
-    match input.trim() {
-        "1" => display::GameBoard::get_board(),
-        "2" => display::GameBoard::get_board(),
-        "3" => display::tutorial(),
-        _ => println!("Sorry, I didn't quite understand that..."),
+    let opt: u8 = match input.trim() {
+        "1" => 1,
+        "2" => 2,
+        "3" => 3,
+        _ => 4,
+    };
+
+    // something is off about the match closure, making this neccesary,
+    // I still want to keep the match tho, for when I figure it out
+    if opt == 1 || opt == 2 {
+        display::GameBoard::get_board(&mut new_board);
+    } else if opt == 3 {
+        display::GameBoard::tutorial();
+    } else if opt == 4 {
+        println!("Sorry, I didn't quite understand that...");
     }
 }
 
