@@ -1,8 +1,7 @@
-use std::rc;
+/*
+use crate::Tile;
 
-use crate::tile;
-
-pub fn verify_move(start: tile, end: tile, boundary_x: &u8, boundary_y: &u8) -> bool {
+pub fn verify_move(start: Tile, end: Tile, boundary_x: &u8, boundary_y: &u8) -> bool {
     let mut is_move_valid: bool = false;
 
     if (start.row == end.row) && (start.col == end.col) {
@@ -14,7 +13,7 @@ pub fn verify_move(start: tile, end: tile, boundary_x: &u8, boundary_y: &u8) -> 
     return is_move_valid;
 }
 
-fn team(param: &tile) -> Option<bool> {
+fn team(param: &Tile) -> Option<bool> {
     let is_white: bool = false;
 
     // get gameboard
@@ -30,7 +29,7 @@ struct CollisionRes {
     is_collision: bool,
     is_same_team: bool,
 }
-fn collision(start: &tile, end: tile) -> CollisionRes {
+fn collision(start: &Tile, end: Tile) -> CollisionRes {
     let res = CollisionRes {
         is_collision: false,
         is_same_team: false,
@@ -51,7 +50,7 @@ fn valid_move(bx: &u8, by: &u8) {}
 
 fn p_move(bx: &u8, by: &u8) {}
 
-fn r_move(start: tile, end: tile, bx: &u8, by: &u8) -> bool {
+fn r_move(start: Tile, end: Tile, bx: &u8, by: &u8) -> bool {
     let mut is_move_valid: bool = false;
 
     if start.row == end.row {
@@ -63,7 +62,7 @@ fn r_move(start: tile, end: tile, bx: &u8, by: &u8) -> bool {
 
             let cc = collision(
                 &start,
-                tile {
+                Tile {
                     row: end.row,
                     col: ii,
                 },
@@ -83,7 +82,7 @@ fn r_move(start: tile, end: tile, bx: &u8, by: &u8) -> bool {
 
             let cc = collision(
                 &start,
-                tile {
+                Tile {
                     row: ii,
                     col: end.row,
                 },
@@ -115,3 +114,4 @@ fn pinned_piece(bx: &u8, by: &u8) {}
 fn check(bx: &u8, by: &u8) {}
 
 fn checkmate(bx: &u8, by: &u8) {}
+*/
